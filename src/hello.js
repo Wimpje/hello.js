@@ -384,7 +384,7 @@ extend(hello, {
 		// Triggering popup?
 		else if (opts.display === 'popup') {
 
-			const win = utils.popup(url, redirectUri, opts.popup);
+			const win = utils.popup(url, '', opts.popup);
 
 			// Monitor the state of the popup...
 			prs.push(Until((accept, reject) => {
@@ -602,9 +602,9 @@ extend(hello.utils, {
 				extend(p, a);
 			}
 			catch (e) {
-				var stateDecoded = decodeURIComponent(p.state);
+				let stateDecoded = decodeURIComponent(p.state);
 				try {
-					var b = JSON.parse(stateDecoded);
+					let b = JSON.parse(stateDecoded);
 					extend(p, b);
 				}
 				catch (e) {
